@@ -1,0 +1,71 @@
+{
+	"name": "inknote",
+	"displayName": "inknote",
+	"description": "",
+	"publisher": "mndyu",
+	"version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mndyu/vscode-ink.git"
+  },
+	"engines": {
+		"vscode": "^1.51.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:inknote.createDailyNote"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+        "category": "InkNote",
+				"title": "Create a daily note",
+				"command": "inknote.createDailyNote"
+			}
+		],
+		"configuration": {
+      "title": "InkNote",
+      "properties": {
+				"inknote.rootPath": {
+          "type": ["string", "null"],
+          "default": null,
+          "description": "Specifies the root path of inknote."
+				},
+        "inknote.dailyNoteFolderName": {
+          "type": ["string", "null"],
+          "default": "_daily",
+          "description": "Specifies the folder name containing daily notes."
+				},
+				"inknote.dailyNoteFileNames": {
+          "type": "array",
+          "default": ["todo.md", "pomo.md", "journal.md", "inbox.md"],
+          "description": "Specifies the names of the files that will be created in daily note folder."
+        }
+      }
+    }
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.51.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.0",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.9.0",
+		"@typescript-eslint/eslint-plugin": "^4.1.1",
+		"@typescript-eslint/parser": "^4.1.1",
+		"glob": "^7.1.6",
+		"mocha": "^8.1.3",
+		"typescript": "^4.0.2",
+		"vscode-test": "^1.4.0"
+	}
+}
